@@ -6,7 +6,8 @@ from [SegmentIO](https://segment.com/) into an Angular application
 ## Installation
 
 In your Angular project, run `bower install --save fs-segmentio` to save the module.
-Then, in your HTML, add the script tags for `fs-segmentio` and `analytics.js`
+Then, in your HTML, add the script tags for `fs-segmentio` and `analytics.js`, dropping
+in your Segment IO write key:
 
 ``` html
 <script type="text/javascript">
@@ -20,7 +21,7 @@ Then, in your HTML, add the script tags for `fs-segmentio` and `analytics.js`
 And lastly, in your Angular module, include `fs-segmentio` as a dependency:
 
 ``` javascript
-angular.module('my-app', ['fs-segmentio')
+angular.module('my-app', ['fs-segmentio'])
 ```
 
 ## Usage
