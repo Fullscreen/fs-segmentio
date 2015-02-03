@@ -11,10 +11,6 @@ angular.module('fs-segmentio', [])
         window.analytics[method].apply(window.analytics, args)
     return methods
 
-  .run ['$rootScope', 'segmentio', ($rootScope, segmentio) ->
-    $rootScope.$on "$routeChangeSuccess", -> segmentio.page()
-  ]
-
   .directive 'track', ['segmentio', (segmentio) ->
     restrict: 'A'
     link: ($scope, $element, attributes) ->

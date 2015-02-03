@@ -40,13 +40,6 @@ describe 'The segmentio service', ->
         test(func, input)
         spies.reset()
 
-  it "should record virtual pageviews when we change pages", ->
-    $rootScope.$emit "$routeChangeSuccess"
-    expect(window.analytics.page).toHaveBeenCalled()
-
-    $rootScope.$emit "$routeChangeSuccess"
-    expect(window.analytics.page.callCount).toBe(2)
-
 
 describe 'The segmentio directive', ->
   factory = undefined

@@ -57,10 +57,6 @@ Data can be added to an event by adding a `track-data` attribute on the element:
   </a>"
 ```
 
-Lastly, a `segmentio.page()` call is made everytime the core Angular router
-emits a `$routeChangeSuccess` event, so your virtual Angular pages will trigger
-pageviews normally.
-
 ## Contributing
 
 To get your dev environment up and running, run `npm install` and `bower install`

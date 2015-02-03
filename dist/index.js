@@ -20,13 +20,7 @@
       };
     });
     return methods;
-  }).run([
-    '$rootScope', 'segmentio', function($rootScope, segmentio) {
-      return $rootScope.$on("$routeChangeSuccess", function() {
-        return segmentio.page();
-      });
-    }
-  ]).directive('track', [
+  }).directive('track', [
     'segmentio', function(segmentio) {
       return {
         restrict: 'A',
