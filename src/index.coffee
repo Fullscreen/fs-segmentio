@@ -3,10 +3,13 @@ isExternalLink = (url) ->
   a.href = url
   a.origin isnt window.location.origin
 
+isFunc = (name) ->
+  typeof window.analytics[name] is 'function'
+
 angular.module('fs-segmentio', [])
   .factory 'segmentio', ->
     methods = {}
-    ['load', 'page', 'pageview', 'track', 'trackLink', 'identify'].forEach (method) ->
+    Object.keys(window.analytics).filter(isFunc).forEach (method) ->
       methods[method] = (args...) ->
         window.analytics[method].apply(window.analytics, args)
     return methods
