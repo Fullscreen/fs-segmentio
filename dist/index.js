@@ -1,6 +1,6 @@
 (function() {
-  var isExternalLink,
-    __slice = [].slice;
+  var isExternalLink, isFunc,
+    slice = [].slice;
 
   isExternalLink = function(url) {
     var a;
@@ -9,13 +9,17 @@
     return a.origin !== window.location.origin;
   };
 
+  isFunc = function(name) {
+    return typeof window.analytics[name] === 'function';
+  };
+
   angular.module('fs-segmentio', []).factory('segmentio', function() {
     var methods;
     methods = {};
-    ['load', 'page', 'pageview', 'track', 'trackLink', 'identify'].forEach(function(method) {
+    Object.keys(window.analytics).filter(isFunc).forEach(function(method) {
       return methods[method] = function() {
         var args;
-        args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+        args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
         return window.analytics[method].apply(window.analytics, args);
       };
     });

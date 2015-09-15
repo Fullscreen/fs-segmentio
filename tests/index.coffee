@@ -1,6 +1,58 @@
-window.analytics = {}
-analyticsMethods = ['load', 'page', 'pageview', 'track', 'trackLink', 'identify']
-analyticsMethods.forEach (method) -> analytics[method] = () ->
+noop = () ->
+
+window.analytics =
+  options: {}
+  Integrations: {}
+  _integrations: {}
+  _readied: true
+  _timeout: 300
+  _user: {}
+  log: noop
+  addEventListener: noop
+  on: noop
+  once: noop
+  removeEventListener: noop
+  removeAllListeners: noop
+  removeListener: noop
+  off: noop
+  emit: noop
+  listeners: noop
+  hasListeners: noop
+  use: noop
+  addIntegration: noop
+  initialize: noop
+  init: noop
+  setAnonymousId: noop
+  add: noop
+  identify: noop
+  user: noop
+  group: noop
+  track: noop
+  trackLink: noop
+  trackClick: noop
+  trackForm: noop
+  trackSubmit: noop
+  page: noop
+  pageview: noop
+  alias: noop
+  ready: noop
+  timeout: noop
+  debug: noop
+  _options: noop
+  _callback: noop
+  _invoke: noop
+  push: noop
+  reset: noop
+  _parseQuery: noop
+  normalize: noop
+  noConflict: noop
+  _callbacks: {}
+  require: noop
+  VERSION: 1000
+  initialized: true
+
+analyticsMethods = Object.keys(window.analytics).filter (key) ->
+  typeof window.analytics[key] is 'function'
 
 describe 'The segmentio service', ->
   segmentio = undefined
@@ -39,6 +91,9 @@ describe 'The segmentio service', ->
       inputs.forEach (input) ->
         test(func, input)
         spies.reset()
+
+  it "should have a reset method", ->
+    expect(typeof segmentio.reset).toBe('function')  
 
 
 describe 'The segmentio directive', ->
